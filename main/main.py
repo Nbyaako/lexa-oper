@@ -6,7 +6,7 @@ import cryptolib
 
 
 app = tk.Tk()
-app.title("hello guys")
+app.title("костыльный дом")
 def center_window(app):
     app.geometry("500x400")
     app.update_idletasks() 
@@ -19,6 +19,10 @@ center_window(app)
 app.resizable(False, False)
 
 list_encode = ['XOR', 'AES', 'DES', 'RSA', 'Blowfish', 'Twofish', 'Serpent']
+
+def copy_text():
+    app.clipboard_clear()
+    app.clipboard_append(entry_end.get())
 
 
 div1 = tk.Frame(app, background='#ff0000')
@@ -34,6 +38,7 @@ def on_button_click():
     secret_key = entry_key.get()
     selected_value = combox.get()
     
+    # Очищаем плейсхолдеры если они стоят
     if user_text == 'Текст для шифрования':
         user_text = ''
     if secret_key == 'Секретный ключ':
@@ -57,6 +62,7 @@ def on_button_decrypt():
     secret_key = entry_key.get()
     selected_value = combox.get()
     
+    # Очищаем плейсхолдеры если они стоят
     if encrypted_text == 'Текст для шифрования':
         encrypted_text = ''
     if secret_key == 'Секретный ключ':
@@ -81,6 +87,7 @@ combox = ttk.Combobox(div5, values=list_encode, height=4)
 entry_comment = tk.Entry(div6, width=20, fg="#313131")
 entry_key = tk.Entry(div7, width=20, fg="#313131")
 entry_end = tk.Entry(div3, width=20)
+btn_copy = tk.Button(div3, text="скопировать", command=copy_text)
 
 def on_entry_click(event):
     if entry_comment.get() == 'Текст для шифрования':
@@ -116,12 +123,14 @@ def otrisovka():
     div5.pack(fill=tk.BOTH, expand=1, padx=5, pady=5,side=tk.BOTTOM)
     div6.pack(fill=tk.BOTH, expand=1, padx=5, pady=5,side=tk.TOP)
     div7.pack(fill=tk.BOTH, expand=1, padx=5, pady=5,side=tk.BOTTOM)
+    
     btn.pack(side=tk.BOTTOM, pady=20)
     btn_decrypt.pack(side=tk.BOTTOM, pady=5)
     combox.pack(side=tk.TOP, ipady=5)
     entry_comment.pack(side=tk.BOTTOM, pady=5, ipadx=10)
-    entry_key.pack(side=tk.TOP, pady=5, ipadx=10)
-    entry_end.pack(side=tk.LEFT, pady=5, padx=5, ipadx=10)
+    entry_key.pack(side=tk.TOP, padx=5 ,pady=5, ipadx=10)
+    entry_end.pack(side=tk.TOP,padx=5, pady=(175,10), ipadx=10)
+    btn_copy.pack(side=tk.TOP, pady=5)
 otrisovka()
 
 def bind():
