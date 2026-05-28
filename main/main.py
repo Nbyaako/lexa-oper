@@ -17,6 +17,7 @@ def center_window(app):
     app.geometry(f"{width}x{height}+{x}+{y}")
 center_window(app)
 app.resizable(False, False)
+app.configure(bg="#a8a1a1")
 
 list_encode = ['XOR', 'AES', 'DES', 'RSA', 'Blowfish', 'Twofish', 'Serpent']
 
@@ -25,13 +26,13 @@ def copy_text():
     app.clipboard_append(entry_end.get())
 
 
-div1 = tk.Frame(app, background='#ff0000')
-div2 = tk.Frame(div1, background='#0000ff')
-div3 = tk.Frame(div1, background='#00ffff')
-div4 = tk.Frame(div1, background='#ff00ff')
-div5 = tk.Frame(div1, background='#ffff00')
-div6 = tk.Frame(div2, background='#000000')
-div7 = tk.Frame(div2, background='#ff6666')
+div1 = tk.Frame(app, bg="#a8a1a1")
+div2 = tk.Frame(div1, bg="#a8a1a1")
+div3 = tk.Frame(div1, bg="#a8a1a1")
+div4 = tk.Frame(div1, bg="#a8a1a1")
+div5 = tk.Frame(div1, bg="#a8a1a1")
+div6 = tk.Frame(div2, bg="#a8a1a1")
+div7 = tk.Frame(div2, bg="#a8a1a1")
 
 def on_button_click():
     user_text = entry_comment.get()
